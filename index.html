@@ -425,7 +425,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Matheus Petrovich &lt;<a href="mailto:matheus.petrovich@gmail.com">matheus.petrovich@gmail.com</a>&gt;</p>
+<p>Matheus Petrovich &lt;<a href="mailto:matheus.petrovich@gmail.com">matheus.petrovich@gmail.com</a>&gt;<br>
+Leandro Campelo &lt;<a href="mailto:leandrocampelo92@gmail.com">leandrocampelo92@gmail.com</a>&gt;</p>
 </div>
 </div>
 </div>
@@ -434,15 +435,158 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_exercício_3_manipulando_pixels_em_uma_imagem">Exercício 3: Manipulando pixels em uma imagem</h3>
+<div class="sect3">
+<h4 id="_1_criando_região_negativa">1-Criando Região Negativa</h4>
 <div class="paragraph">
-<p>====1-Criando Região Negativa====
-=====O programa a seguir recebe como entrada uma imagem e coordenadas (x0,y0) e (x1,y1) para desenhar uma região dentro da qual as cores serão invertidas. Esse efeito é obtido através da substituićão do valor de um pixel por seu complemento para 255.</p>
+<p>O programa a seguir recebe como entrada uma imagem e coordenadas (x0,y0) e (x1,y1) para desenhar uma região dentro da qual as cores serão invertidas. Esse efeito é obtido através da substituição do valor de um pixel por seu complemento para 255.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exercício_4_preenchendo_regiões">Exercício 4: Preenchendo Regiões</h3>
+<div class="sect3">
+<h4 id="_1">1-</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_2">2-</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exercício_5_manipulação_de_histograma">Exercício 5: Manipulação de Histograma</h3>
+<div class="sect3">
+<h4 id="_1_equalização">1-Equalização</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_2_detector_de_movimentos">2-Detector de Movimentos</h4>
+<div class="paragraph">
+<p>O projeto a seguir utiliza alterações no histograma dos frames de um vídeo para detectar movimentos na cena. Para um detector mais básico, utilizamos apenas uma das componentes de cor da imagem. As entradas para o programa são um valor que indica a sensibilidade do detector, e um intervalo de tempo para regravar a referencia (em milisegundos).
+Para cada frame, o histograma da componente vermelha é calculado e é então comparado com o histograma do frame de referência. A Diferença entre cada tom é calculada e acumulada em uma variável <em>dif</em>, que é comparada ao limiar. Quando o limiar é ultrapassado, um círculo indicativo vermelho é desenhado no centro da tela.</p>
+</div>
+<div class="paragraph">
+<p>O intervalo de atualização é medido antes do loop infinito do streaming de vídeo e novamente no fim do loop, se o tempo passado for múltiplo do intervalo, a referência é atualizada.</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">moDetec.cpp</div>
+<div class="content">
+<pre class="highlight"><code class="language-c++" data-lang="c++">	(...)
+	  	saida = (int) clock() - (time_1); <b class="conum">(1)</b>
+    	saida2 = (double) ((saida) / (double) CLOCKS_PER_SEC); <b class="conum">(2)</b>
+			saida2 *= 1000.0; <b class="conum">(3)</b>
+			if((int)saida2%intervalo&lt;100){ <b class="conum">(4)</b>
+				histV = histR.clone(); <b class="conum">(5)</b>
+			}
+		}
+		return 0;
+	}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><sup>1</sup> Calcula a diferença de clocks do começo até agora<br>
+<sup>2</sup> Transforma os clocks em microsegundos<br>
+<sup>3</sup> Transforma micro em milisegundos<br>
+<sup>4</sup> Verifica se tempo é múltiplo do intervalo<br>
+<sup>5</sup> Atualiza a referência<br></p>
+</div>
+<div class="paragraph">
+<p>O código na íntegra pode ser encontrado <a href="moDetec.cpp">aqui</a></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exercício_6_filtros_espaciais">Exercício 6: Filtros Espaciais</h3>
+<div class="sect3">
+<h4 id="_1_concatenação_de_filtros">1-Concatenação de Filtros</h4>
+<div class="paragraph">
+<p>O Programa fornecido como base possui uma série de filtros espaciais permitindo ao usuário trocar entre eles em tempo real, os filtros são os seguintes:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>lista de nivel 1</p>
+<p>Média</p>
 </li>
+<li>
+<p>Gauss</p>
+</li>
+<li>
+<p>Bordas Verticais</p>
+</li>
+<li>
+<p>Bordas Horizontais</p>
+</li>
+<li>
+<p>Laplaciano</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A esses adicionamos uma opção para a aplicação encadeada dos filtros Gaussiano e Laplaciano, nessa ordem. Para acessar essa nova opção o usuário deve digitar 'x', o caractere digitado serve como input para uma instrução <em>switch</em>, o <code>case x</code> foi adicionado sobre o <code>case g:</code>, que trata a seleção do filtro Gaussiano. Para todos os efeitos o programa está executando uma filtragem com a máscara Gaussiana.
+Para acompanhar no código qual filtro havia sido selecionado, foi necessária a inclusão da variável char <em>keys</em>, uma vez que no runtime o único registro do filtro selecionado é a máscara em <em>mask</em>. Em cada <code>case</code> foi inserida uma instrução para registrar qual filtro foi selecionado em keys. Após a operação de filtragem foi inserido um condicional que testa se o filtro escolhido foi o 'x', se tiver sido, a segunda filtragem é executada na imagem de saída da primeira, observe o trexo de código:</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">filtragem.cpp</div>
+<div class="content">
+<pre class="highlight"><code class="language-c++" data-lang="c++">		(...) //configuração
+	video &gt;&gt; cap; //imagem é capturada
+  cvtColor(cap, frame, CV_BGR2GRAY); //convertida para grayscale
+  flip(frame, frame, 1); //espelhada
+  imshow("original", frame);
+  frame.convertTo(frame32f, CV_32F); //convertida para float
+
+	filter2D(frame32f, frameFiltered, frame32f.depth(), mask, Point(1,1), 0);
+		//filtrada uma vez
+
+	if(absolut){
+	  frameFiltered=abs(frameFiltered);
+	}
+	if(keys == 'x'){ //se opção x
+     mask = Mat(3, 3, CV_32F, laplacian); //muda a mascara para o laplaciano
+
+		filter2D(frame32f, frameFiltered, frame32f.depth(), mask, Point(1,1), 0);
+			// filtra uma segunda vez
+
+		mask = Mat(3, 3, CV_32F, gauss); // e volta a mascara pra gaussiana
+	}
+		(...) //exibe imagem e testa se usuário mudou o tipo de filtragem</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A imagem original é a seguinte:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="6_2_Input.png" alt="Frame Original">
+</div>
+<div class="title">Figure 1. Frame Original</div>
+</div>
+<div class="paragraph">
+<p>O resultado do Laplaciano isolado pode ser visto abaixo:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="6_2_Laplaciano.png" alt="Resultado Filtro Laplaciano">
+</div>
+<div class="title">Figure 2. Resultado Filtro Laplaciano</div>
+</div>
+<div class="paragraph">
+<p>O resultado da aplicação do Laplaciano em uma imagem tratada com o Gaussiano pode ser visto abaixo:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="6_2_LaplGauss.png" alt="Resultado da Combinação de filtros">
+</div>
+<div class="title">Figure 3. Resultado da Combinação de filtros</div>
+</div>
+<div class="paragraph">
+<p>É possível observar nas imagens que naquela tratada inicialmente com o gaussiano, um filtro de borramento, as bordas da imagem são menos evidentes, mais apagadas.</p>
+</div>
+<div class="paragraph">
+<p>O código na íntegra pode ser encontrado <a href="filtragem.cpp">aqui</a></p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>lista de nivel 1</p>
 <div class="ulist">
@@ -471,7 +615,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <img src="hello.png" alt="Saida do programa hello">
 </div>
-<div class="title">Figure 1. Saída do programa hello</div>
+<div class="title">Figure 4. Saída do programa hello</div>
 </div>
 <div class="paragraph">
 <p>Aqui vem a listagem do programa <a href="exemplos/hello.cpp" class="bare">exemplos/hello.cpp</a> , mostrada
@@ -486,6 +630,7 @@ uma imagem fornecida via linha de comando.</p>
 </div>
 <div class="paragraph">
 <p>Podem ser inseridas equacoes como \$\int_a^b f(x) dx\$</p>
+</div>
 </div>
 </div>
 </div>
@@ -508,7 +653,7 @@ uma imagem fornecida via linha de comando.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-15 12:03:58 BRT
+Last updated 2016-03-17 23:42:16 BRT
 </div>
 </div>
 <script type="text/x-mathjax-config">
