@@ -449,7 +449,7 @@ Leandro Campelo &lt;<a href="mailto:leandrocampelo92@gmail.com">leandrocampelo92
 
 </div>
 <div class="sect3">
-<h4 id="_2_contagem_de_objetos_com_buracos">2-Contagem de Objetos com Buracos====</h4>
+<h4 id="_2_contagem_de_objetos_com_buracos">2-Contagem de Objetos com Buracos</h4>
 <div class="paragraph">
 <p>O projeto a seguir recebe uma imagem binária como entrada, objetos sendo brancos e o fundo preto, e conta quantos desses objetos têm buracos (um ou mais) e quantos não têm. Uma vez que vamos estar contando dois tipos distintos de objetos, trocamos a rotulação por dois contadores. Um exemplo de entrada é a imagem a seguir:</p>
 </div>
@@ -464,12 +464,12 @@ Leandro Campelo &lt;<a href="mailto:leandrocampelo92@gmail.com">leandrocampelo92
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="sBordas.png" alt="Sem Bordas">
+<img src="sBordas.png" alt="Sem Objetos Tocando as Bordas">
 </div>
-<div class="title">Figure 2. Sem Bordas</div>
+<div class="title">Figure 2. Sem Objetos Tocando as Bordas</div>
 </div>
 <div class="paragraph">
-<p>Uma vez que desejamos reconhecer os objetos com buracos, inicialmente diferenciamos os buracos do fundo, levando o fundo para 100. Agora a imagem será varrida em busca de objetos com buracos. Quando um pixel branco tiver sido precedido por um pixel preto, isso indica que acabamos de sair de um buraco. Uma vez que o fundo passou por floodfill para o tom 100, qualquer pixel preto necessáriamente pertence a um buraco. Tanto o objeto quanto o buraco sofrem floodfill para a cor do fundo, o contador <em>nobjectsCB</em> é incementado, e a varredura segue.</p>
+<p>Uma vez que desejamos reconhecer os objetos com buracos, inicialmente diferenciamos os buracos do fundo, levando o fundo para 100. Agora a imagem será varrida em busca de objetos com buracos. Quando um pixel branco tiver sido precedido por um pixel preto, isso indica que acabamos de sair de um buraco. Uma vez que o fundo passou por floodfill para o tom 100, qualquer pixel preto necessáriamente pertence a um buraco. Tanto o objeto quanto o buraco sofrem floodfill para a cor do fundo, o contador <em>nobjectsCB</em> é incrementado, e a varredura segue.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -691,7 +691,7 @@ uma imagem fornecida via linha de comando.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-18 01:11:26 BRT
+Last updated 2016-03-18 01:16:13 BRT
 </div>
 </div>
 <script type="text/x-mathjax-config">
