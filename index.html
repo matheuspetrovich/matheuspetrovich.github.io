@@ -449,8 +449,46 @@ Leandro Campelo &lt;<a href="mailto:leandrocampelo92@gmail.com">leandrocampelo92
 
 </div>
 <div class="sect3">
-<h4 id="_2">2-</h4>
-
+<h4 id="_2_contagem_de_objetos_com_buracos">2-Contagem de Objetos com Buracos====</h4>
+<div class="paragraph">
+<p>O projeto a seguir recebe uma imagem binária como entrada, objetos sendo brancos e o fundo preto, e conta quantos desses objetos têm buracos (um ou mais) e quantos não têm. Uma vez que vamos estar contando dois tipos distintos de objetos, trocamos a rotulação por dois contadores. Um exemplo de entrada é a imagem a seguir:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="bolhas.png" alt="Exemplo de Entrada">
+</div>
+<div class="title">Figure 1. Exemplo de Entrada</div>
+</div>
+<div class="paragraph">
+<p>Para retirar os objetos que estão em contato com as bordas, inicialmente o programa desenha uma moldura interna no tom dos objetos, 255, e em seguida executa um floodfill para a cor de fundo a partir do (0,0), resultando na imagem a seguir:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="sBordas.png" alt="Sem Bordas">
+</div>
+<div class="title">Figure 2. Sem Bordas</div>
+</div>
+<div class="paragraph">
+<p>Uma vez que desejamos reconhecer os objetos com buracos, inicialmente diferenciamos os buracos do fundo, levando o fundo para 100. Agora a imagem será varrida em busca de objetos com buracos. Quando um pixel branco tiver sido precedido por um pixel preto, isso indica que acabamos de sair de um buraco. Uma vez que o fundo passou por floodfill para o tom 100, qualquer pixel preto necessáriamente pertence a um buraco. Tanto o objeto quanto o buraco sofrem floodfill para a cor do fundo, o contador <em>nobjectsCB</em> é incementado, e a varredura segue.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="fundo.png" alt="Fundo em tom 100">
+</div>
+<div class="title">Figure 3. Fundo em tom 100</div>
+</div>
+<div class="paragraph">
+<p>Quando o programa chega ao fim da imagem, uma segunda varredura ocorrerá, procurrando por pixels brancos. Quaisquer pixeis brancos remanescentes na imagem pertecem a objetos sem buracos. Quando um pixel com tom 255 for encontrado na varredura ele passará por floodfill para a cor do fundo (para nao ser contabilizado mais de uma vez) e o contador <em>nobjectsSB</em> será incrementado. O output do programa para a imagem de exemplo pode ser visto abaixo:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ ./labelling bolhas.png
+&gt; sem: 12, com: 8</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>O código na íntegra pode ser encontrado <a href="labelling.cpp">aqui</a></p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -559,7 +597,7 @@ Para acompanhar no código qual filtro havia sido selecionado, foi necessária a
 <div class="content">
 <img src="6_2_Input.png" alt="Frame Original">
 </div>
-<div class="title">Figure 1. Frame Original</div>
+<div class="title">Figure 4. Frame Original</div>
 </div>
 <div class="paragraph">
 <p>O resultado do Laplaciano isolado pode ser visto abaixo:</p>
@@ -568,7 +606,7 @@ Para acompanhar no código qual filtro havia sido selecionado, foi necessária a
 <div class="content">
 <img src="6_2_Laplaciano.png" alt="Resultado Filtro Laplaciano">
 </div>
-<div class="title">Figure 2. Resultado Filtro Laplaciano</div>
+<div class="title">Figure 5. Resultado Filtro Laplaciano</div>
 </div>
 <div class="paragraph">
 <p>O resultado da aplicação do Laplaciano em uma imagem tratada com o Gaussiano pode ser visto abaixo:</p>
@@ -577,7 +615,7 @@ Para acompanhar no código qual filtro havia sido selecionado, foi necessária a
 <div class="content">
 <img src="6_2_LaplGauss.png" alt="Resultado da Combinação de filtros">
 </div>
-<div class="title">Figure 3. Resultado da Combinação de filtros</div>
+<div class="title">Figure 6. Resultado da Combinação de filtros</div>
 </div>
 <div class="paragraph">
 <p>É possível observar nas imagens que naquela tratada inicialmente com o gaussiano, um filtro de borramento, as bordas da imagem são menos evidentes, mais apagadas.</p>
@@ -615,7 +653,7 @@ Para acompanhar no código qual filtro havia sido selecionado, foi necessária a
 <div class="content">
 <img src="hello.png" alt="Saida do programa hello">
 </div>
-<div class="title">Figure 4. Saída do programa hello</div>
+<div class="title">Figure 7. Saída do programa hello</div>
 </div>
 <div class="paragraph">
 <p>Aqui vem a listagem do programa <a href="exemplos/hello.cpp" class="bare">exemplos/hello.cpp</a> , mostrada
@@ -653,7 +691,7 @@ uma imagem fornecida via linha de comando.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-17 23:42:16 BRT
+Last updated 2016-03-18 01:11:26 BRT
 </div>
 </div>
 <script type="text/x-mathjax-config">
