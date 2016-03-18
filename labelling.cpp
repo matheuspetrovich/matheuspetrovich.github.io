@@ -50,7 +50,6 @@ int main(int argc, char** argv){
 				p.x=j;
 				p.y=i;
 				floodFill(image,p,100);
-				floodFill(image,old,100);
 				nobjectsCB++;
 	  }
 		old.x = i;
@@ -58,7 +57,7 @@ int main(int argc, char** argv){
 		oldc = image.at<uchar>(i,j);
 	}
   }
-	
+	imshow("1",image);
 	for(int i=0; i<height; i++)
     for(int j=0; j<width; j++)
       if(image.at<uchar>(i,j) == 255){
@@ -69,7 +68,7 @@ int main(int argc, char** argv){
 				nobjectsSB++;
 		}
 	printf("sem: %d, com: %d\n",nobjectsSB, nobjectsCB);
-  //waitKey();
+  waitKey();
   return 0;
 }
 
