@@ -725,102 +725,6 @@ Leandro Campelo &lt;<a href="mailto:leandrocampelo92@gmail.com">leandrocampelo92
 <p>Para realizar este exercício foi necessário utilizar a função <code>split()</code> para separar os canais e armazená-los nos vetores &#8216;planes[]&#8217; (vetores das componentes R, G e B) para equalizá-los de forma separada através da função <code>equalizeHist()</code>, após a equalização ser feita em cada uma das componentes de cor, é feito o cálculo do histograma para cada uma delas através da função <code>calcHist()</code>. Logo depois, fazemos a operação reversa através da função <code>merge()</code> juntando os canais em uma única matriz. Depois disso é feito a normalização e o <em>plot</em> dos histogramas dos 3 canais no canto superior esquerdo do <em>frame</em>.</p>
 </div>
 <div class="paragraph">
-<p>Em seguida, temos o código dessa questão:</p>
-</div>
-<div class="listingblock">
-<div class="title">questao5-1.cpp</div>
-<div class="content">
-<pre>#include &lt;iostream&gt;
-#include &lt;opencv2/opencv.hpp&gt;
-
-using namespace cv;
-using namespace std;
-
-int main(int argc, char** argv){
-  Mat image;
-  int width, height;
-  VideoCapture cap;
-  vector&lt;Mat&gt; planes;
-  Mat histR, histG, histB;
-  int nbins = 64;
-  float range[] = {0, 256};
-  const float *histrange = { range };
-  bool uniform = true;
-  bool acummulate = false;
-
-  cap.open(0);
-
-  if(!cap.isOpened()){
-    cout &lt;&lt; "cameras indisponiveis";
-    return -1;
-  }
-
-  width  = cap.get(CV_CAP_PROP_FRAME_WIDTH);
-  height = cap.get(CV_CAP_PROP_FRAME_HEIGHT);
-
-  cout &lt;&lt; "largura = " &lt;&lt; width &lt;&lt; endl;
-  cout &lt;&lt; "altura  = " &lt;&lt; height &lt;&lt; endl;
-
-  int histw = nbins, histh = nbins/2;
-  Mat histImgR(histh, histw, CV_8UC3, Scalar(0,0,0));
-  Mat histImgG(histh, histw, CV_8UC3, Scalar(0,0,0));
-  Mat histImgB(histh, histw, CV_8UC3, Scalar(0,0,0));
-
-  while(1){
-    cap &gt;&gt; image;
-    split (image, planes);
-
-    equalizeHist(planes[0], planes[0]);
-    equalizeHist(planes[1], planes[1]); <b class="conum">(1)</b>
-    equalizeHist(planes[2], planes[2]);
-
-    calcHist(&amp;planes[0], 1, 0, Mat(), histR, 1,
-             &amp;nbins, &amp;histrange,
-             uniform, acummulate);
-    calcHist(&amp;planes[1], 1, 0, Mat(), histG, 1,
-             &amp;nbins, &amp;histrange,
-             uniform, acummulate);
-    calcHist(&amp;planes[2], 1, 0, Mat(), histB, 1,
-             &amp;nbins, &amp;histrange,
-             uniform, acummulate);
-
-    merge(planes, image); <b class="conum">(2)</b>
-
-    normalize(histR, histR, 0, histImgR.rows, NORM_MINMAX, -1, Mat());
-    normalize(histG, histB, 0, histImgR.rows, NORM_MINMAX, -1, Mat());
-    normalize(histB, histB, 0, histImgR.rows, NORM_MINMAX, -1, Mat());
-
-    histImgR.setTo(Scalar(0));
-    histImgG.setTo(Scalar(0));
-    histImgB.setTo(Scalar(0));
-
-    for(int i=0; i&lt;nbins; i++){
-      line(histImgR, Point(i, histh),
-           Point(i, cvRound(histR.at&lt;float&gt;(i))),
-           Scalar(0, 0, 255), 1, 8, 0);
-      line(histImgG, Point(i, histh),
-           Point(i, cvRound(histG.at&lt;float&gt;(i))),
-           Scalar(0, 255, 0), 1, 8, 0);
-      line(histImgB, Point(i, histh),
-           Point(i, cvRound(histB.at&lt;float&gt;(i))),
-           Scalar(255, 0, 0), 1, 8, 0);
-    }
-
-    histImgR.copyTo(image(Rect(0, 0       ,nbins, histh)));
-    histImgG.copyTo(image(Rect(0, histh   ,nbins, histh)));
-    histImgB.copyTo(image(Rect(0, 2*histh ,nbins, histh)));
-
-    imshow("imagem equalizada", image);
-    if(waitKey(30) &gt;= 0) break;
-  }
-  return 0;
-}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Para realizar o download deste código clique <a href="equalize.cpp">aqui</a>.</p>
-</div>
-<div class="paragraph">
 <p>A modificação no <a href="histogram.cpp">código do tutorial</a> para a realização deste exercício foi:</p>
 </div>
 <div class="ulist">
@@ -1130,7 +1034,7 @@ Esse programa tem como entrada uma imagem e em tempo de operação pede ao usuá
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-21 23:45:50 BRT
+Last updated 2016-03-21 23:49:57 BRT
 </div>
 </div>
 <script type="text/x-mathjax-config">
