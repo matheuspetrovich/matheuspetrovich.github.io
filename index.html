@@ -934,7 +934,13 @@ Para acompanhar no código qual filtro havia sido selecionado, foi necessária a
 <h4 id="_1_tiltshift_estático">1-Tiltshift Estático</h4>
 <div class="paragraph">
 <p>Tiltshift é um processo de edição de imagem (e de fotografia) que usa o borramento e a angulação da imagem para simular que uma paisagem seja, na verdade, uma miniatura. Esse efeito pode ser obtido pela associação de duas versões de uma mesma imagem, sendo uma com borramento e outra sem. A imagem com borramento é exibida nas margens superior e inferior para simular o efeito de distância, enquanto a imagem em foco aparece no centro, representando justamente o foco da imagem final.
-Esse programa tem como entrada uma imagem e em tempo de operação pede ao usuário mais 3 inputs. Em sliders que aparecem juntamente com a imagem de saída o usuário pode configurar a posição central da janela de foco, a largura da janela de foco, e a "agressividade" do decaimento entre as duas imagens. A ponderação entre as duas imagens é dada pela função alfa que é função do <em>x</em>, <em>l1</em>, <em>l2</em> e <em>d</em>, onde <em>x</em> é a linha da imagem, <em>d</em> é o decaimento, e <em>l1</em> e <em>l2</em> são as linhas nas quais o alfa é 0.5. <em>l1</em> pode ser encontrado como a posição da janela menos metade da largura, e <em>l2</em> a posição da janela mais a metade da largura. As imagens abaixo tem o propósito de ilustrar como a alteração dos parâmetros posição e largura modificam a janela:</p>
+Esse programa tem como entrada uma imagem e em tempo de operação pede ao usuário mais 3 inputs. Em sliders que aparecem juntamente com a imagem de saída o usuário pode configurar a posição central da janela de foco, a largura da janela de foco, e a "agressividade" do decaimento entre as duas imagens. A ponderação entre as duas imagens é dada pela função alfa que é função do <em>x</em>, <em>l1</em>, <em>l2</em> e <em>d</em>, onde <em>x</em> é a linha da imagem, <em>d</em> é o decaimento, e <em>l1</em> e <em>l2</em> são as linhas nas quais o alfa é 0.5. <em>l1</em> pode ser encontrado como a posição da janela menos metade da largura, e <em>l2</em> a posição da janela mais a metade da largura.</p>
+</div>
+<div class="paragraph">
+<p>\$a(x) = 1/2*(tanh((x-l1)/d) - tanh((x-l2)/d))\$</p>
+</div>
+<div class="paragraph">
+<p>As imagens abaixo tem o propósito de ilustrar como a alteração dos parâmetros posição e largura modificam a janela:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1046,14 +1052,14 @@ Esse programa tem como entrada uma imagem e em tempo de operação pede ao usuá
 </ul>
 </div>
 <div class="paragraph">
-<p>Podem ser inseridas equacoes como \$\int_a^b f(x) dx\$</p>
+<p>Podem ser inseridas equacoes como</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-21 23:53:33 BRT
+Last updated 2016-03-21 23:56:48 BRT
 </div>
 </div>
 <script type="text/x-mathjax-config">
