@@ -37,11 +37,6 @@ int main(int argc, char** argv){
   while(1){
     cap >> image;
     split (image, planes);
-
-    equalizeHist(planes[0], planes[0]);   
-    equalizeHist(planes[1], planes[1]);   
-    equalizeHist(planes[2], planes[2]);   
-					 
     calcHist(&planes[0], 1, 0, Mat(), histR, 1,
              &nbins, &histrange,
              uniform, acummulate);
@@ -55,8 +50,6 @@ int main(int argc, char** argv){
     normalize(histR, histR, 0, histImgR.rows, NORM_MINMAX, -1, Mat());
     normalize(histG, histB, 0, histImgR.rows, NORM_MINMAX, -1, Mat());
     normalize(histB, histB, 0, histImgR.rows, NORM_MINMAX, -1, Mat());
-
-    merge(planes, image);
 
     histImgR.setTo(Scalar(0));
     histImgG.setTo(Scalar(0));
@@ -73,12 +66,10 @@ int main(int argc, char** argv){
            Point(i, cvRound(histB.at<float>(i))),
            Scalar(255, 0, 0), 1, 8, 0);
     }
-
     histImgR.copyTo(image(Rect(0, 0       ,nbins, histh)));
     histImgG.copyTo(image(Rect(0, histh   ,nbins, histh)));
     histImgB.copyTo(image(Rect(0, 2*histh ,nbins, histh)));
-    
-    imshow("imagem equalizada", image);
+    imshow("image", image);
     if(waitKey(30) >= 0) break;
   }
   return 0;
