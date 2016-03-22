@@ -787,6 +787,25 @@ Leandro Campelo &lt;<a href="mailto:leandrocampelo92@gmail.com">leandrocampelo92
 <p>O projeto a seguir utiliza alterações no histograma dos frames de um vídeo para detectar movimentos na cena. Para um detector mais básico, utilizamos apenas uma das componentes de cor da imagem. As entradas para o programa são um valor que indica a sensibilidade do detector, e um intervalo de tempo para regravar a referencia (em milisegundos).
 Para cada frame, o histograma da componente vermelha é calculado e é então comparado com o histograma do frame de referência. A Diferença entre cada tom é calculada e acumulada em uma variável <em>dif</em>, que é comparada ao limiar. Quando o limiar é ultrapassado, um círculo indicativo vermelho é desenhado no centro da tela.</p>
 </div>
+<div id="app-listing" class="listingblock">
+<div class="title">moDetec.cpp</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="c">			<span class="tok-p">(...)</span>
+    <span class="tok-k">for</span><span class="tok-p">(</span><span class="tok-kt">int</span> <span class="tok-n">i</span><span class="tok-o">=</span><span class="tok-mi">0</span><span class="tok-p">;</span> <span class="tok-n">i</span><span class="tok-o">&lt;</span><span class="tok-n">nbins</span><span class="tok-p">;</span> <span class="tok-n">i</span><span class="tok-o">++</span><span class="tok-p">){</span>
+
+			<span class="tok-n">dif</span> <span class="tok-o">+=</span> <span class="tok-n">abs</span><span class="tok-p">(</span><span class="tok-n">histV</span><span class="tok-p">.</span><span class="tok-n">at</span><span class="tok-o">&lt;</span><span class="tok-kt">float</span><span class="tok-o">&gt;</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-p">)</span><span class="tok-o">-</span><span class="tok-n">histR</span><span class="tok-p">.</span><span class="tok-n">at</span><span class="tok-o">&lt;</span><span class="tok-kt">float</span><span class="tok-o">&gt;</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-p">));</span> <span class="tok-c1">//acumula para calcular diferenca media</span>
+
+      <span class="tok-n">line</span><span class="tok-p">(</span><span class="tok-n">histImgR</span><span class="tok-p">,</span> <span class="tok-n">Point</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-p">,</span> <span class="tok-n">histh</span><span class="tok-p">),</span>
+           <span class="tok-n">Point</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-p">,</span> <span class="tok-n">cvRound</span><span class="tok-p">(</span><span class="tok-n">histR</span><span class="tok-p">.</span><span class="tok-n">at</span><span class="tok-o">&lt;</span><span class="tok-kt">float</span><span class="tok-o">&gt;</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-p">))),</span>
+           <span class="tok-n">Scalar</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">255</span><span class="tok-p">),</span> <span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">8</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">);</span>
+  	<span class="tok-p">}</span>
+		<span class="tok-k">if</span><span class="tok-p">(</span><span class="tok-n">dif</span> <span class="tok-o">&gt;</span> <span class="tok-n">thres</span><span class="tok-p">)</span> <span class="tok-c1">//se a diferenca for acima do limite permitido</span>
+			<span class="tok-n">circle</span><span class="tok-p">(</span><span class="tok-n">image</span><span class="tok-p">,</span><span class="tok-n">Point</span><span class="tok-p">(</span><span class="tok-n">image</span><span class="tok-p">.</span><span class="tok-n">cols</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">,</span><span class="tok-n">image</span><span class="tok-p">.</span><span class="tok-n">rows</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">),</span><span class="tok-mi">200</span><span class="tok-p">,</span> <span class="tok-n">Scalar</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span><span class="tok-mi">0</span><span class="tok-p">,</span><span class="tok-mi">255</span><span class="tok-p">),</span><span class="tok-o">-</span><span class="tok-mi">200</span><span class="tok-p">);</span> <span class="tok-c1">//ativa alarme</span>
+
+		<span class="tok-n">dif</span> <span class="tok-o">=</span> <span class="tok-mi">0</span><span class="tok-p">;</span> <span class="tok-c1">// reseta dif pro proximo frame</span>
+			<span class="tok-p">(...)</span></code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>O intervalo de atualização é medido antes do loop infinito do streaming de vídeo e novamente no fim do loop, se o tempo passado for múltiplo do intervalo, a referência é atualizada.</p>
 </div>
@@ -1034,7 +1053,7 @@ Esse programa tem como entrada uma imagem e em tempo de operação pede ao usuá
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-21 23:49:57 BRT
+Last updated 2016-03-21 23:53:33 BRT
 </div>
 </div>
 <script type="text/x-mathjax-config">
