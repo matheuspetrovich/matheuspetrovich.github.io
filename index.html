@@ -709,8 +709,17 @@ Leandro Campelo &lt;<a href="mailto:leandrocampelo92@gmail.com">leandrocampelo92
 <div class="paragraph">
 <p>Este exercício tem como objetivo equalizar imagens (<em>frames</em>) capturadas por uma câmera em tempo real e mostrar os seus respectivos histogramas. Para realizar este exercício temos que ter uma noção do que é a equalização de imagens. Equalização é um método que melhora significativamente o contraste da imagem, fazendo com que a visualização de imagens muito escuras ou muito claras se torne melhor. Ela faz a distribuição de ocorrências das cores no histograma, fazendo com que as cores que estão muito concentradas em uma região do histrograma sejas distribuídas por toda a faixa do histograma, fazendo com que certos locais da imagem que antes tinham difícil visualização possam ser destacadas. Temos um exemplo disso logo abaixo:</p>
 </div>
-<div class="paragraph">
-<p>COLOCAR IMAGENS SEM EQUALIZAÇÃO       |       COLOCAR IMAGENS COM EQUALIZAÇÃO</p>
+<div class="imageblock">
+<div class="content">
+<img src="histograma.png" alt="Imagem original sem equalização">
+</div>
+<div class="title">Figure 11. Imagem original sem equalização</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="equalizado.png" alt="Imagem equalizada">
+</div>
+<div class="title">Figure 12. Imagem equalizada</div>
 </div>
 <div class="paragraph">
 <p>Para realizar este exercício foi necessário utilizar a função <code>split()</code> para separar os canais e armazená-los nos vetores &#8216;planes[]&#8217; (vetores das componentes R, G e B) para equalizá-los de forma separada através da função <code>equalizeHist()</code>, após a equalização ser feita em cada uma das componentes de cor, é feito o cálculo do histograma para cada uma delas através da função <code>calcHist()</code>. Logo depois, fazemos a operação reversa através da função <code>merge()</code> juntando os canais em uma única matriz. Depois disso é feito a normalização e o <em>plot</em> dos histogramas dos 3 canais no canto superior esquerdo do <em>frame</em>.</p>
@@ -968,7 +977,7 @@ Para acompanhar no código qual filtro havia sido selecionado, foi necessária a
 <div class="content">
 <img src="6_2_Input.png" alt="Frame Original">
 </div>
-<div class="title">Figure 11. Frame Original</div>
+<div class="title">Figure 13. Frame Original</div>
 </div>
 <div class="paragraph">
 <p>O resultado do Laplaciano isolado pode ser visto abaixo:</p>
@@ -977,7 +986,7 @@ Para acompanhar no código qual filtro havia sido selecionado, foi necessária a
 <div class="content">
 <img src="6_2_Laplaciano.png" alt="Resultado Filtro Laplaciano">
 </div>
-<div class="title">Figure 12. Resultado Filtro Laplaciano</div>
+<div class="title">Figure 14. Resultado Filtro Laplaciano</div>
 </div>
 <div class="paragraph">
 <p>O resultado da aplicação do Laplaciano em uma imagem tratada com o Gaussiano pode ser visto abaixo:</p>
@@ -986,7 +995,7 @@ Para acompanhar no código qual filtro havia sido selecionado, foi necessária a
 <div class="content">
 <img src="6_2_LaplGauss.png" alt="Resultado da Combinação de filtros">
 </div>
-<div class="title">Figure 13. Resultado da Combinação de filtros</div>
+<div class="title">Figure 15. Resultado da Combinação de filtros</div>
 </div>
 <div class="paragraph">
 <p>É possível observar nas imagens que naquela tratada inicialmente com o gaussiano, um filtro de borramento, as bordas da imagem são menos evidentes, mais apagadas.</p>
@@ -1008,19 +1017,19 @@ Esse programa tem como entrada uma imagem e em tempo de operação pede ao usuá
 <div class="content">
 <img src="linhas_50_50.png" alt="Centro da janela em 50% da image" width="e 50% de largura">
 </div>
-<div class="title">Figure 14. Centro da janela em 50% da image, e 50% de largura</div>
+<div class="title">Figure 16. Centro da janela em 50% da image, e 50% de largura</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="linhas_50_25.png" alt="Centro da janela em 50% da image" width="e 25% de largura">
 </div>
-<div class="title">Figure 15. Centro da janela em 50% da image, e 25% de largura</div>
+<div class="title">Figure 17. Centro da janela em 50% da image, e 25% de largura</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="linhas_70_25.png" alt="Centro da janela em 70% da image" width="e 25% de largura">
 </div>
-<div class="title">Figure 16. Centro da janela em 70% da image, e 25% de largura</div>
+<div class="title">Figure 18. Centro da janela em 70% da image, e 25% de largura</div>
 </div>
 <div class="paragraph">
 <p>A imagem desfocada é obtida através da passagem de um filtro suavizador de bordas de 5x5 três vezes sobre a imagem original seguindo exemplo do exercício de filtragem, abaixo segue a seção de código responsável:</p>
@@ -1085,7 +1094,7 @@ Esse programa tem como entrada uma imagem e em tempo de operação pede ao usuá
 <div class="content">
 <img src="Tilt_Ex.jpg" alt="Exemplo de funcionamento do programa">
 </div>
-<div class="title">Figure 17. Exemplo de funcionamento do program</div>
+<div class="title">Figure 19. Exemplo de funcionamento do program</div>
 </div>
 <div class="paragraph">
 <p>Somente a imagem:</p>
@@ -1094,53 +1103,7 @@ Esse programa tem como entrada uma imagem e em tempo de operação pede ao usuá
 <div class="content">
 <img src="tiltshift.png" alt="Exemplo de imagem tratada Fonte: Ney Douglas - Novo Jornal">
 </div>
-<div class="title">Figure 18. Exemplo de imagem tratada Fonte: Ney Douglas - Novo Jornal</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>lista de nivel 1</p>
-<div class="ulist">
-<ul>
-<li>
-<p>lista de nivel 2</p>
-</li>
-<li>
-<p>lista de nivel 2</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>lista de nivel 1</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Link github (<a href="http://github.com/agostinhobritojr/dca0201">http://github.com/agostinhobritojr/dca0201</a>)</p>
-</div>
-<div class="paragraph">
-<p>A saída do programa <em>hello</em> é mostrado na Figura <a href="#fig_hello">[fig_hello]</a></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="hello.png" alt="Saida do programa hello">
-</div>
-<div class="title">Figure 19. Saída do programa hello</div>
-</div>
-<div class="paragraph">
-<p>Aqui vem a listagem do programa <a href="exemplos/hello.cpp" class="bare">exemplos/hello.cpp</a> , mostrada
-Listagem <a href="#exa_hello">Hello</a>, cuja única funcionalidade apresentar na tela
-uma imagem fornecida via linha de comando.</p>
-</div>
-<div id="exa_hello" class="listingblock">
-<div class="title">hello.cpp</div>
-<div class="content">
-<pre class="pygments highlight"><code data-lang="cpp"><span class="tok-n">matheus</span> <span class="tok-n">ferraz</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Podem ser inseridas equacoes como \$\int_a^b f(x) dx\$</p>
+<div class="title">Figure 20. Exemplo de imagem tratada Fonte: Ney Douglas - Novo Jornal</div>
 </div>
 </div>
 </div>
@@ -1152,19 +1115,22 @@ uma imagem fornecida via linha de comando.</p>
 <div class="ulist bibliography">
 <ul class="bibliography">
 <li>
-<p>Stephen Prata. 'C++ Primer Plus'. Addison-Wesley. 1990. 2 ed.</p>
+<p>Agostinho Brito Jr. 'Tutorial de Processamento de Imagens'. Disponível em <a href="http://agostinhobritojr.github.io/tutoriais/pdi/" class="bare">http://agostinhobritojr.github.io/tutoriais/pdi/</a></p>
 </li>
 <li>
 <p><a href="http://www.cplusplus.com" class="bare">http://www.cplusplus.com</a>. 'Principal portal de desenvolvimento e referência para programação em C++'.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>Podem ser inseridas equacoes como \$\int_a^b f(x) dx\$</p>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-21 23:25:52 BRT
+Last updated 2016-03-21 23:45:50 BRT
 </div>
 </div>
 <script type="text/x-mathjax-config">
