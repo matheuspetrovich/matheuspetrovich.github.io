@@ -1034,6 +1034,68 @@ Esse programa tem como entrada uma imagem e em tempo de operação pede ao usuá
 </div>
 <div class="title">Figure 20. Exemplo de imagem tratada Fonte: Ney Douglas - Novo Jornal</div>
 </div>
+<div class="paragraph">
+<p>O código na íntegra pode ser encontrado <a href="tilt.cpp">aqui</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_2_tiltshift_em_vídeo">2-Tiltshift em Vídeo</h4>
+<div class="paragraph">
+<p>As seguintes alterações foram feitas ao programa acima para a edição de vídeo</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>	VideoCapture vid(argv[1]); <b class="conum">(1)</b>
+	int width = static_cast&lt;int&gt;(vid.get(CV_CAP_PROP_FRAME_WIDTH));
+  int height = static_cast&lt;int&gt;(vid.get(CV_CAP_PROP_FRAME_HEIGHT));
+  double FPS = vid.get(CV_CAP_PROP_FPS);
+	VideoWriter out("output.mov", CV_FOURCC('m','p', '4', 'v'), 15, cv::Size(width, height)); <b class="conum">(2)</b></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><sup>1</sup> Ao invés de abrir a câmera, o programa abre o arquivo de vídeo passado como parâmetro
+<sup>2</sup> Aqui ele cria o arquivo de saída, com base nas configurações do de entrada</p>
+</div>
+<div class="paragraph">
+<p>A outra alteração foi que a distorção da imagem de entrada agora fica em um loop de leitura do vídeo, e no fim do loop há um comando de escrita da imagem final no arquivo de saída, como pode ser visto abaixo:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>	while(1){
+		vid &gt;&gt; image1;
+		image2 = image1.clone();
+
+		float media[] = {1,1,1,1,1,
+										 1,1,1,1,1,
+										 1,1,1,1,1,
+										 1,1,1,1,1,
+										 1,1,1,1,1};
+		mask = Mat(5, 5, CV_32F, media);
+		scaleAdd(mask, 1/25.0, Mat::zeros(5,5,CV_32F), mask1);
+		swap(mask, mask1);
+
+	// -------- criar imagem borrada---------------
+		image2.convertTo(frame32f, CV_32F);
+		filter2D(frame32f, frameFiltered, frame32f.depth(), mask, Point(1,1), 0);
+		frame32f = frameFiltered;
+		filter2D(frame32f, frameFiltered, frame32f.depth(), mask, Point(1,1), 0);
+		frame32f = frameFiltered;
+		filter2D(frame32f, frameFiltered, frame32f.depth(), mask, Point(1,1), 0);
+		frameFiltered.convertTo(image1, CV_8U);
+	//----------------------------------------------
+		on_trackbar_config(jan_slider,0);
+		out &lt;&lt; dst;
+		if(cv::waitKey(1000.0/FPS) == 27) break;
+
+	}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Infelizmente não pudemos finalizar a obtenção do vídeo de saída ainda, pois ocorreram erros no salvamento. Continuaremos a tentar e atualizaremos esta página com o programa funcionando plenamente, mas com o código é possível visualizar o vídeo editado, e alterar as configurações da janela, somente não salva.</p>
+</div>
+<div class="paragraph">
+<p>O código na íntegra pode ser encontrado <a href="vTilt.cpp">aqui</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -1051,15 +1113,12 @@ Esse programa tem como entrada uma imagem e em tempo de operação pede ao usuá
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>Podem ser inseridas equacoes como</p>
-</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-21 23:58:16 BRT
+Last updated 2016-03-22 00:43:42 BRT
 </div>
 </div>
 <script type="text/x-mathjax-config">
