@@ -41,8 +41,8 @@ void on_trackbar_config(int, void*){
 	imwrite("linhas.png",dst);//*/
 
 	for(int i=0; i<dst.rows ;i++){
-			alfa = 0.5*(tanh((i-l1)/(dec_slider+1))-tanh((i-l2)/(dec_slider+1)));
-			addWeighted(image2.row(i), alfa, image1.row(i), 1-alfa,0.0,dst.row(i));
+			alfa = 0.5*(tanh((i-l1)/(double)(dec_slider+1.0))-tanh((i-l2)/(double)(dec_slider+1.0)));
+			addWeighted(image2.row(i), alfa, image1.row(i), 1.0-alfa,0.0,dst.row(i));
 	}
 	imshow("Tiltshift",dst);
 	imwrite("tiltshift.png",dst);
