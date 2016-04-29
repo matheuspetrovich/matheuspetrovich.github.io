@@ -487,16 +487,129 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>DCA0445: Processamento Digital de Imagens</h1>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_ainda_não_disponível">Ainda não disponível</h2>
+<div id="preamble">
 <div class="sectionbody">
+<div class="paragraph">
+<p>Matheus Petrovich &lt;<a href="mailto:matheus.petrovich@gmail.com">matheus.petrovich@gmail.com</a>&gt;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lista_de_exercício_unidade_ii">Lista de Exercício: Unidade II</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_exercício_8_filtragem_no_domínio_da_frequência">Exercício 8: Filtragem no Domínio da Frequência</h3>
+<div class="paragraph">
+<p>Esse projeto requer o desenvolvimento de um filtro Homomórfico, esse filtro tem o efeito de corrigir questões de iluminação na imagem e age no domínio da frequência. Ele realçar as altas frequências enquanto atenua as baixas frequências, o filtro tem um perfil como visto na função abaixo:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="unidadeII/funcao.png" alt="Perfil do Filtro Homomórfico">
+</div>
+<div class="title">Figure 1. Perfil do Filtro Homomórfico</div>
+</div>
+<div class="paragraph">
+<p>Podendo ser obtido por meio da seguinte expressão:</p>
+</div>
+<div class="paragraph">
+<p>\$H(u,v) = (\gamma h - \gamma l)(1 - e^(-c((D^2 (u,v) )/(D^2 0)))) + \gamma l\$</p>
+</div>
+<div class="paragraph">
+<p>Na expressão acima, D0, \$\gamma h\$, \$\gamma l\$ e c são variáveis que definem o comportamento do filtro, elas podem ser alteradas em tempo real por meio de sliders (figura <a href="#fig6">"Saída do Programa"</a>). Com o movimento dos sliders o filtro é recalculado pela função <code>on_trackbar_config(int, void*)</code> copiada abaixo:</p>
+</div>
+<div id="app-listing" class="listingblock">
+<div class="title">filtroH.cpp</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="c"><span class="tok-p">(...)</span>
+	<span class="tok-kt">void</span> <span class="tok-n">on_trackbar_config</span><span class="tok-p">(</span><span class="tok-kt">int</span><span class="tok-p">,</span> <span class="tok-kt">void</span><span class="tok-o">*</span><span class="tok-p">){</span>
+		<span class="tok-kt">int</span> <span class="tok-n">M</span><span class="tok-p">,</span><span class="tok-n">N</span><span class="tok-p">;</span>
+		<span class="tok-kt">float</span> <span class="tok-n">D2</span><span class="tok-p">,</span> <span class="tok-n">dh</span><span class="tok-p">,</span> <span class="tok-n">dl</span><span class="tok-p">,</span> <span class="tok-n">d0</span><span class="tok-p">;</span>
+		<span class="tok-n">M</span> <span class="tok-o">=</span> <span class="tok-n">dft_M</span><span class="tok-p">;</span>
+		<span class="tok-n">N</span> <span class="tok-o">=</span> <span class="tok-n">dft_N</span><span class="tok-p">;</span>
+		<span class="tok-n">dh</span> <span class="tok-o">=</span> <span class="tok-n">dh_slider</span><span class="tok-o">/</span><span class="tok-mf">10.0</span><span class="tok-p">;</span> <b class="conum">(1)</b>
+		<span class="tok-n">dl</span> <span class="tok-o">=</span> <span class="tok-n">dl_slider</span><span class="tok-o">/</span><span class="tok-mf">10.0</span><span class="tok-p">;</span> <b class="conum">(2)</b>
+		<span class="tok-n">d0</span> <span class="tok-o">=</span> <span class="tok-n">d0_slider</span><span class="tok-o">/</span><span class="tok-mf">10.0</span><span class="tok-p">;</span> <b class="conum">(3)</b>
 
+		<span class="tok-n">tmp</span> <span class="tok-o">=</span> <span class="tok-n">Mat</span><span class="tok-p">(</span><span class="tok-n">dft_M</span><span class="tok-p">,</span> <span class="tok-n">dft_N</span><span class="tok-p">,</span> <span class="tok-n">CV_32F</span><span class="tok-p">);</span>
+		<span class="tok-k">for</span><span class="tok-p">(</span><span class="tok-kt">int</span> <span class="tok-n">i</span><span class="tok-o">=</span><span class="tok-mi">0</span><span class="tok-p">;</span> <span class="tok-n">i</span><span class="tok-o">&lt;</span><span class="tok-n">dft_M</span> <span class="tok-p">;</span><span class="tok-n">i</span><span class="tok-o">++</span><span class="tok-p">)</span>
+			<span class="tok-k">for</span><span class="tok-p">(</span><span class="tok-kt">int</span> <span class="tok-n">j</span><span class="tok-o">=</span><span class="tok-mi">0</span><span class="tok-p">;</span> <span class="tok-n">j</span><span class="tok-o">&lt;</span><span class="tok-n">dft_N</span> <span class="tok-p">;</span><span class="tok-n">j</span><span class="tok-o">++</span><span class="tok-p">){</span>
+					<span class="tok-n">D2</span> <span class="tok-o">=</span> <span class="tok-p">((</span><span class="tok-kt">float</span><span class="tok-p">)</span><span class="tok-n">i</span><span class="tok-o">-</span><span class="tok-n">M</span><span class="tok-o">/</span><span class="tok-mf">2.0</span><span class="tok-p">)</span><span class="tok-o">*</span><span class="tok-p">((</span><span class="tok-kt">float</span><span class="tok-p">)</span><span class="tok-n">i</span><span class="tok-o">-</span><span class="tok-n">M</span><span class="tok-o">/</span><span class="tok-mf">2.0</span><span class="tok-p">)</span> <span class="tok-o">+</span> <span class="tok-p">((</span><span class="tok-kt">float</span><span class="tok-p">)</span><span class="tok-n">j</span><span class="tok-o">-</span><span class="tok-n">N</span><span class="tok-o">/</span><span class="tok-mf">2.0</span><span class="tok-p">)</span><span class="tok-o">*</span><span class="tok-p">((</span><span class="tok-kt">float</span><span class="tok-p">)</span><span class="tok-n">j</span><span class="tok-o">-</span><span class="tok-n">N</span><span class="tok-o">/</span><span class="tok-mf">2.0</span><span class="tok-p">);</span>
+					<span class="tok-n">tmp</span><span class="tok-p">.</span><span class="tok-n">at</span><span class="tok-o">&lt;</span><span class="tok-kt">float</span><span class="tok-o">&gt;</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-p">,</span><span class="tok-n">j</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-n">dh</span><span class="tok-o">-</span><span class="tok-n">dl</span><span class="tok-p">)</span><span class="tok-o">*</span><span class="tok-p">(</span><span class="tok-mf">1.0</span><span class="tok-o">-</span><span class="tok-n">exp</span><span class="tok-p">(</span><span class="tok-o">-</span><span class="tok-mf">1.0</span><span class="tok-o">*</span><span class="tok-p">(</span><span class="tok-kt">float</span><span class="tok-p">)</span><span class="tok-n">c_slider</span><span class="tok-o">*</span><span class="tok-p">(</span><span class="tok-n">D2</span><span class="tok-o">/</span><span class="tok-p">(</span><span class="tok-n">d0</span><span class="tok-o">*</span><span class="tok-n">d0</span><span class="tok-p">))))</span><span class="tok-o">+</span> <span class="tok-n">dl</span><span class="tok-p">;</span>
+				<span class="tok-p">}</span>
+		<span class="tok-n">Mat</span> <span class="tok-n">comps</span><span class="tok-p">[]</span><span class="tok-o">=</span> <span class="tok-p">{</span><span class="tok-n">tmp</span><span class="tok-p">,</span> <span class="tok-n">tmp</span><span class="tok-p">};</span>
+		<span class="tok-n">merge</span><span class="tok-p">(</span><span class="tok-n">comps</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-n">filter</span><span class="tok-p">);</span> <b class="conum">(4)</b>
+	<span class="tok-p">}</span>
+<span class="tok-p">(...)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><sup>1</sup> <sup>2</sup> <sup>3</sup> Transforma o valor do slider do range 0-100 para 0-10, uma vez que o slider não permite valores decimais, e esses são desejados para o cálculo do filtro<br>
+<sup>4</sup> Uma vez que a transformada de fourier da imagem é uma matriz com dois canais, o filtro precisa ser igual. Assim o H calculado em <code>tmp</code> é duplicado em <code>filter</code> que são ambas variáveis globais</p>
+</div>
+<div class="paragraph">
+<p>O programa recebe como entrada o nome de uma imagem, a carrega em escala de cinza, calcula a Transformada de Fourier, troca os quadrantes de modo que o sinal fique com a origem no centro da figura. Após aplicar o filtro no domínio da frequência (multiplicação das duas matrizes editadas por meio de padding para que tenham tamanhos iguais) os quadrantes são destrocados e a imagem sofre a Transformada de Fourier inversa. Exemplo de input pode ser visto na imagem abaixo:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="unidadeII/input.png" alt="Exemplo de imagem com problemas de iluminação">
+</div>
+<div class="title">Figure 2. Exemplo de imagem com problemas de iluminação</div>
+</div>
+<div class="paragraph">
+<p>Sua transformada de Fourier tem a seguinte forma:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="unidadeII/DFTa.png" alt="Transformada de Fourier">
+</div>
+<div class="title">Figure 3. Transformada de Fourier</div>
+</div>
+<div class="paragraph">
+<p>O filtro que deu o melhor resultado foi o abaixo:</p>
+</div>
+<div id="fig4" class="imageblock">
+<div class="content">
+<img src="unidadeII/H.png" alt="Filtro Homomórfico">
+</div>
+<div class="title">Figure 4. Filtro Homomórfico</div>
+</div>
+<div class="paragraph">
+<p>Como pode ser visto, a região central, que multiplica as baixas frequências do espectro da imagem, é mais escura, com valores mais próximos do zero, fazendo a atenuação das baixas frequências. As demais regiões brancas mantém a relevância das altas frequências. A seguir pode ser visto o espectro da imagem filtrado:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="unidadeII/DFTd.png" alt="Espectro Filtrado">
+</div>
+<div class="title">Figure 5. Espectro Fitrado</div>
+</div>
+<div class="paragraph">
+<p>A saída do programa, juntamente com os parâmetros que geraram o filtro da Figura <a href="#fig4">"Filtro Homomórfico"</a> pode ser vista abaixo:</p>
+</div>
+<div id="fig6" class="imageblock">
+<div class="content">
+<img src="unidadeII/output.png" alt="Saída do Programa">
+</div>
+<div class="title">Figure 6. Saída do Programa</div>
+</div>
+<div class="paragraph">
+<p>Um comparativo das imagens de entrada e saída:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="unidadeII/comp.png" alt="Comparativo da Entrada com a Saída">
+</div>
+<div class="title">Figure 7. Comparativo da Entrada com a Saída</div>
+</div>
+<div class="paragraph">
+<p>Como pode ser visto acima, nenhuma informação nova é criada, mas a iluminação da imagem e seu brilho ficam mais uniformes mediante a filtragem.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-26 00:45:12 BRT
+Last updated 2016-04-29 00:22:40 BRT
 </div>
 </div>
 <script type="text/x-mathjax-config">
