@@ -1,0 +1,74 @@
+:source-highlighter: pygments
+:stem:
+
+= DCA0445: Processamento Digital de Imagens =
+
+Matheus Petrovich <matheus.petrovich@gmail.com>
+
+== Lista de Exercício: Unidade II ==
+
+=== Exercício 8: Filtragem no Domínio da Frequência ===
+
+Esse projeto requer o desenvolvimento de um filtro Homomórfico, esse filtro tem o efeito de corrigir questões de iluminação na imagem e age no domínio da frequência. Ele realçar as altas frequências enquanto atenua as baixas frequências, o filtro tem um perfil como visto na função abaixo: 
+
+image::unidadeII/funcao.png[Perfil do Filtro Homomórfico, title="Perfil do Filtro Homomórfico"]
+
+Podendo ser obtido por meio da seguinte expressão:
+
+stem:[H(u,v) = (\gamma h - \gamma l)(1 - e^(-c((D^2 (u,v) )/(D^2 0)))) + \gamma l]
+
+Na expressão acima, D0, stem:[\gamma h], stem:[\gamma l] e c são variáveis que definem o comportamento do filtro, elas podem ser alteradas em tempo real por meio de sliders (figura <<fig6>>). Com o movimento dos sliders o filtro é recalculado pela função `on_trackbar_config(int, void*)` copiada abaixo: 
+[[app-listing]]
+[source,c]
+.filtroH.cpp
+----
+(...)
+	void on_trackbar_config(int, void*){
+		int M,N;
+		float D2, dh, dl, d0;
+		M = dft_M;
+		N = dft_N;
+		dh = dh_slider/10.0; //<1>
+		dl = dl_slider/10.0; //<2>
+		d0 = d0_slider/10.0; //<3>
+
+		tmp = Mat(dft_M, dft_N, CV_32F);
+		for(int i=0; i<dft_M ;i++)
+			for(int j=0; j<dft_N ;j++){
+					D2 = ((float)i-M/2.0)*((float)i-M/2.0) + ((float)j-N/2.0)*((float)j-N/2.0);
+					tmp.at<float>(i,j) = (dh-dl)*(1.0-exp(-1.0*(float)c_slider*(D2/(d0*d0))))+ dl;
+				}
+		Mat comps[]= {tmp, tmp};
+		merge(comps, 2, filter); //<4>
+	}
+(...)
+----
+^1^ ^2^ ^3^ Transforma o valor do slider do range 0-100 para 0-10, uma vez que o slider não permite valores decimais, e esses são desejados para o cálculo do filtro +
+^4^ Uma vez que a transformada de fourier da imagem é uma matriz com dois canais, o filtro precisa ser igual. Assim o H calculado em `tmp` é duplicado em `filter` que são ambas variáveis globais 
+
+O programa recebe como entrada o nome de uma imagem, a carrega em escala de cinza, calcula a Transformada de Fourier, troca os quadrantes de modo que o sinal fique com a origem no centro da figura. Após aplicar o filtro no domínio da frequência (multiplicação das duas matrizes editadas por meio de padding para que tenham tamanhos iguais) os quadrantes são destrocados e a imagem sofre a Transformada de Fourier inversa. Exemplo de input pode ser visto na imagem abaixo:
+
+image::unidadeII/input.png[Exemplo de imagem com problemas de iluminação, title="Exemplo de imagem com problemas de iluminação"]
+
+Sua transformada de Fourier tem a seguinte forma: 
+
+image::unidadeII/DFTa.png[Transformada de Fourier, title="Transformada de Fourier"]
+
+O filtro que deu o melhor resultado foi o abaixo: 
+
+[[fig4, Filtro Homomórfico]]
+image::unidadeII/H.png[Filtro Homomórfico, title="Filtro Homomórfico"]
+
+Como pode ser visto, a região central, que multiplica as baixas frequências do espectro da imagem, é mais escura, com valores mais próximos do zero, fazendo a atenuação das baixas frequências. As demais regiões brancas mantém a relevância das altas frequências. A seguir pode ser visto o espectro da imagem filtrado:
+
+image::unidadeII/DFTd.png[Espectro Filtrado, title="Espectro Fitrado"]
+
+A saída do programa, juntamente com os parâmetros que geraram o filtro da Figura <<fig4>> pode ser vista abaixo:
+[[fig6, Saída do Programa]]
+image::unidadeII/output.png[Saída do Programa, title="Saída do Programa"]
+
+Um comparativo das imagens de entrada e saída:
+
+image::unidadeII/comp.png[Comparativo da Entrada com a Saída, title="Comparativo da Entrada com a Saída"]
+
+Como pode ser visto acima, nenhuma informação nova é criada, mas a iluminação da imagem e seu brilho ficam mais uniformes mediante a filtragem.
