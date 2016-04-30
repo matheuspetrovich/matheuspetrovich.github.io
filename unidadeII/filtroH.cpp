@@ -96,7 +96,8 @@ int main(int argc , char** argv){
 		printf("ERRO\n");
 		exit(-1);
 	}
-	image = imread(argv[1],CV_LOAD_IMAGE_GRAYSCALE);
+	image = imread(argv[1],CV_LOAD_IMAGE_GRAYSCALE); // carrega a imagem
+
   // identifica os tamanhos otimos para
   // calculo do FFT
   dft_M = getOptimalDFTSize(image.rows);
@@ -120,13 +121,6 @@ int main(int argc , char** argv){
 	on_trackbar_config(1,0);
 	
   for(;;){
-
-		image = imread(argv[1],CV_LOAD_IMAGE_GRAYSCALE);
-		imwrite("input.png",image);
-  	copyMakeBorder(image, padded, 0,
-                 dft_M - image.rows, 0,
-                 dft_N - image.cols,
-                 BORDER_CONSTANT, Scalar::all(0));
 
     // limpa o array de matrizes que vao compor a
     // imagem complexa
