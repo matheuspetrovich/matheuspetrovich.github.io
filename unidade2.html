@@ -547,7 +547,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <sup>4</sup> Uma vez que a transformada de fourier da imagem é uma matriz com dois canais, o filtro precisa ser igual. Assim o H calculado em <code>tmp</code> é duplicado em <code>filter</code> que são ambas variáveis globais</p>
 </div>
 <div class="paragraph">
-<p>O programa recebe como entrada o nome de uma imagem, a carrega em escala de cinza, calcula a Transformada de Fourier, troca os quadrantes de modo que o sinal fique com a origem no centro da figura. Após aplicar o filtro no domínio da frequência (multiplicação das duas matrizes editadas por meio de padding para que tenham tamanhos iguais) os quadrantes são destrocados e a imagem sofre a Transformada de Fourier inversa. Exemplo de input pode ser visto na imagem abaixo:</p>
+<p>O programa recebe como entrada o nome de uma imagem, a carrega em escala de cinza, tira o logarítmo da imagem para separar as componentes de reflectância e iluminância de uma multiplicação pra uma soma, calcula a Transformada de Fourier, troca os quadrantes de modo que o sinal fique com a origem no centro da figura. Após aplicar o filtro no domínio da frequência (multiplicação das duas matrizes editadas por meio de padding para que tenham tamanhos iguais) os quadrantes são destrocados, a imagem é normalizada com o propósito de diminuir a amplitude dos dados trazendo-os para o intervalo de 0-1. A imagem então passa a Transformada de Fourier inversa e então é feita a exponencial da imagem de saída, seguida de uma segunda normalização. Exemplo de input pode ser visto na imagem abaixo:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -804,7 +804,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-05-04 17:25:20 BRT
+Last updated 2016-05-13 09:17:14 BRT
 </div>
 </div>
 <script type="text/x-mathjax-config">
