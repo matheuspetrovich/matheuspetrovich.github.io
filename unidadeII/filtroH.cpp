@@ -20,7 +20,7 @@ int c_slider = 5;
 int c_slider_max = 100;
 
 int d0_slider = 80;
-int d0_slider_max = 100;
+int d0_slider_max = 1000;
 
 char TrackbarName[50];
 
@@ -80,16 +80,6 @@ int main(int argc , char** argv){
   Mat_<float> realInput, zeros;
   vector<Mat> planos;
 
-  // habilita/desabilita ruido
-  int noise=0;
-  // frequencia do ruido
-  int freq=10;
-  // ganho inicial do ruido
-  float gain=1;
-
-  // valor do ruido
-  float mean;
-
   // guarda tecla capturada
   char key;
 	if(argc != 2){
@@ -98,6 +88,7 @@ int main(int argc , char** argv){
 	}
 	image = imread(argv[1],CV_LOAD_IMAGE_GRAYSCALE); // carrega a imagem
 
+	cv::log(realInput, realInput);
   // identifica os tamanhos otimos para
   // calculo do FFT
   dft_M = getOptimalDFTSize(image.rows);
@@ -129,6 +120,8 @@ int main(int argc , char** argv){
     // cria a compoente real
     realInput = Mat_<float>(padded); 
 
+		// calcula o logarítmo da imagem
+
     // insere as duas componentes no array de matrizes
     planos.push_back(realInput);
     planos.push_back(zeros);
@@ -159,6 +152,12 @@ int main(int argc , char** argv){
     // imagem filtrada
     split(complexImage, planos);
 
+
+    normalize(planos[0], planos[0], 0, 1, CV_MINMAX);
+		// calcula a exponencial da imagem
+		cv::exp(planos[0], planos[0]);
+
+		
     // normaliza a parte real para exibicao
     normalize(planos[0], planos[0], 0, 1, CV_MINMAX);
     imshow("filtrada", planos[0]);
