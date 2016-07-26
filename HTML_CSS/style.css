@@ -1,0 +1,209 @@
+
+body{
+	background-image: url('IMU-logoB.png');
+	background-size:880px 800px;	
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-position:left bottom;
+}
+
+
+#main{
+	background-color: white;
+	height: 1900px;
+	width: 1500px;
+	margin-top: 5px;
+	margin: auto;
+	margin-bottom:100px;
+}
+#header{
+	background-color: white;
+	height:300px;
+	width:1400px;
+	margin: auto;
+	border-bottom:3px solid rgb(220,220,220);
+	
+	
+}
+#logoTop{
+	float:left;
+	height:250px;
+	width: 250px;
+	margin-top:15px;
+	margin-left:50px;
+}
+h2{
+	color: rgb(100,100,100);
+	font-size:2.5em;
+	position: absolute;
+	margin-top: 260px;
+	margin-left:60px;
+}
+ul{
+	padding-top:160px;
+	list-style-type:none;
+	
+}
+
+ul li{
+	float:left;
+	font-size: 1.5em;
+}
+
+ul li a {
+	display:block;
+	text-decoration:none;
+	text-align:center;
+	padding:7px 17px 7px 17px; 
+	font-family:Arial;
+	font-size: 1.6em;
+	color: rgb(140,140,140);  
+	border-bottom:3px solid rgb(55,121,187);
+	background-color: white; 
+	letter-spacing:.08em
+}
+.esse{
+	color:white;
+	background-color: rgb(55,121,187);
+}
+ul li a:hover {
+	color:white;
+	background-color: rgb(55,121,187);
+}
+
+#info{
+	height:500px;
+	width:1100px;
+	margin: auto;
+	margin-top: 20px;
+	background-color:rgb(55,121,187);
+	color: rgb(140,140,140);
+}
+
+#logoInfo{
+	position:absolute;
+	height:500px;
+	width:500px;
+}
+
+
+#texto{
+	position:absolute;
+	margin-top:10px;
+	margin-left:10px;
+	height:480px;
+	width:480px;
+	background-color:white;
+	opacity:0.8;
+}
+h1{
+	position:absolute;
+	text-align: center;
+	color: rgb(10,10,10);
+	font-size:2.5em;
+	margin:80px;
+	padding-left:50px;
+}
+p{
+	position:absolute;
+	text-align:justify;
+	height: 480px;
+	width:400px;
+	text-ident: 10px;
+	color: rgb(10,10,10);
+	font-size:1.6em;
+	margin:60px;
+	margin-top:150px;
+	
+}
+#lab{
+	position:absolute;
+	margin-top:10px;
+	margin-left: 610px;
+	height:470px;
+	width:470px;
+	border:4px ridge;
+	z-index:1;
+
+}
+
+#noticias{
+	margin:auto;
+	margin-top:50px;
+	height: 500px;
+	width: 1100px;
+}
+.mr{
+	margin-right:48px;
+}
+
+#subN{
+	float: left;
+	height:500px;
+	width: 332px;
+	background-color:rgb(204,230,236);
+	
+}
+#subN h1{
+	position:absolute;
+	text-align: center;
+	color: rgb(10,10,10);
+	font-size:1.6em;
+	margin:20px;
+	margin-left:7px;
+}
+#subN p{
+	text-align:justify;
+	position:absolute;
+	color: rgb(10,10,10);
+	font-size:1.3em;
+	height:450px;
+	width:232px;
+	margin:auto;
+	margin-left:50px;
+	margin-top:70px;
+	
+}
+
+#caixa{
+	margin: 450px 0px 0px 0px;
+	height:50px;
+	width:331px;
+	background-color:rgb(28,55,125);
+}
+#sm{
+	text-decoration:none;
+	margin-left:90px;
+	font-size:2em;
+	color: white;
+	
+}
+#fim{
+	position:absolute;
+	height:400px;
+	width:1100px;
+	margin:auto;
+	margin-top:60px;
+}
+#cel{
+	position: absolute;
+	margin:0px;
+	height:400px;
+	width:470px;
+	border-right: 5px solid rgb(200,200,200);
+}
+#fim p{
+	positon:absolute;
+	margin-top: 140px;
+	margin-left: 550px;
+	text-align:justify;
+	float:rigth;
+	height:300px;
+	width:700px;
+	font-size:2.5em;
+	color:rgb(150,150,150);
+}
+#direitos {
+	margin:auto;
+	margin-left: 1500px;
+}
