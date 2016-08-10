@@ -1,0 +1,17 @@
+.Library {
+	margin: auto;
+	float:left;
+  background: url('livros3.png');
+	background-size: 75% 100%;
+	background-repeat: no-repeat;
+	margin-left:5%;
+  height: 80px;
+  width: 120px;
+}
+
+.Library:hover {
+  background: url('livros4.png');
+	background-size: 75% 100%;
+	background-repeat: no-repeat;
+}
+
