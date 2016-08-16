@@ -1,10 +1,8 @@
 .Library {
-	margin: auto;
 	float:left;
   background: url('livros3.png');
 	background-size: 75% 100%;
 	background-repeat: no-repeat;
-	margin-left:5%;
   height: 80px;
   width: 120px;
 }
@@ -14,4 +12,30 @@
 	background-size: 75% 100%;
 	background-repeat: no-repeat;
 }
+
+
+.imTexto {
+  background: url('pergaminho.png');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+  height: 800px;
+  width: 800px;
+}
+
+.texPer {
+	text-align: justify;
+	font-family: 'Indie Flower', cursive;
+	position:relative;
+	margin-left: 210px;
+	margin-right: 170px;
+}
+
+.texMenu {
+	color: black;
+	font-size: 25px;
+	font-family: 'Indie Flower', cursive;
+	padding-top:60px;
+	padding-right:25px
+}
+
 
