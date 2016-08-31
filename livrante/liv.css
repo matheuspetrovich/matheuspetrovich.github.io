@@ -5,7 +5,7 @@
 }
 
 @media 
-only screen and (max-width: 900px) {
+only screen and (max-width: 500px) {
 	.logo {
 	width:200px;
 	margin:auto;
@@ -157,7 +157,7 @@ h1.texLiv{
 
 
 @media 
-only screen and (max-width: 900px) {
+only screen and (max-width: 500px) {
 
 	/* Force table to not be like tables anymore */
 	table, thead, tbody, th, td, tr { 
