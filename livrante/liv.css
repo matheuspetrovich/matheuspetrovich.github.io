@@ -68,6 +68,7 @@ h1.texPer {
 /*----------------Livros.html--------------------*/
 
 .imLiv {
+	cursor: pointer;
 	margin:auto;
 	display:block;
   background: url('pergaminho3.png');
@@ -140,12 +141,81 @@ h1.texLiv{
 }
 
 .table{
+	position:relative;
 	width:1000px;
 }
 
 .seta {
 	width:20px;
 	height:20px;
+}
+
+#tela {
+	visibility: hidden;
+	width: 700px;
+	height: 550px;
+	background-size: 700px 500px;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: absolute;
+	left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:30px;	
+}
+
+#fecha {
+	float: right;
+	border: solid 1px gray;
+	z-index: -1;
+	cursor: pointer;
+	background-image: url('xis.png');
+	background-size: 20px 20px;
+	
+	height:20px;
+	width:20px;
+	margin-top:0;
+	margin-right:0;
+}
+
+#esq {
+	width: 260px;
+	height: 350px;
+	/*background-repeat: no-repeat;
+	background-position: center;*/
+	float: left;
+  margin-left: 75px;
+  margin-top: 90px;	
+}
+
+#tEsq{
+	text-align: center;
+	position:relative;
+	font-size: 25px;
+	font-family: 'Indie Flower', cursive;
+	font-weight: bold;
+}
+#pEsq{
+	text-align: center;
+	font-size: 17px;
+	font-family: 'Indie Flower', cursive;
+	position:relative;
+	margin-top:0;
+	padding-top:0;
+	line-height:95%;
+	font-weight: normal
+}
+
+#dir {
+	width: 240px;
+	height: 350px;
+	border: solid 1px gray;
+	/*background-repeat: no-repeat;
+	background-position: center;*/
+	float: right;
+  margin-right: 45px;
+  margin-top: 90px;
 }
 
 /*-----------------FAQ.html-----------------------*/
@@ -161,7 +231,7 @@ h1.texLiv{
 	margin:auto;
 	display:block;
   background: url('barra.png');
-	background-size: 500px; 95px;
+	background-size: 500px 95px;
 	background-repeat: no-repeat;
   width: 500px;
 	height: 200px;
