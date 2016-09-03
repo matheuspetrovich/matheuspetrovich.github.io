@@ -5,12 +5,60 @@
 }
 
 @media 
-only screen and (max-width: 500px) {
+only screen and (max-width: 900px) {
 	.logo {
-	width:200px;
-	margin:auto;
-	display:block;
-}
+		width:460px;
+		margin:auto;
+		display:block;
+	}
+	
+	#menuP {
+		/*display:inline;*/
+	}
+	
+	.menu{
+		display: none;
+	}
+	#b1 {
+		display: none;
+	}
+	.barra{
+		width:90%;
+		margin:auto;	
+		display:block;
+	}
+	.Library {
+  	margin-left:10px;
+  	margin-right:300px;
+  	margin-top:25px;
+  	float:middle;
+		display:block;
+		background-size: 20% 30%;
+	}
+
+	.Library:hover {
+  	margin-left:20px;
+		display:block;
+		background-size: 20% 30%;
+	}
+
+	.selec {
+		display:block;
+  	margin-left:10px;
+  	margin-right:300px;
+  	margin-top:25px;
+		background-size: 20% 30%;
+	}
+	
+	.texMenu {
+		z-index:1011;
+		color: black;
+		font-size: 40px;
+		font-family: 'Indie Flower', cursive;
+		margin-left:140px;
+		margin-top:-45px;
+		line-height:95%;
+	}
 }
 
 .menu {
@@ -20,8 +68,10 @@ only screen and (max-width: 500px) {
 }
 
 .barra {
-	margin:auto;	
-	display:block;
+	text-align:center;
+	margin-left:auto;	
+	margin-right:auto;	
+	display:block;;
 }
 
 .l {
@@ -82,6 +132,34 @@ h1.texPer {
 
 /*----------------Livros.html--------------------*/
 
+#menuP {
+	/*display:none;*/
+	width:60px;
+	height:45px;
+	position: absolute;
+	margin-top: 50px;
+	margin-left:-10px;
+	z-index: -3;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	z-index: 1011;
+	background: url('menup.png');
+}
+
+#menuL {
+	visibility: hidden;
+	position:absolute;
+	width: 300px;
+	height: 500px;
+	margin-top:20px;
+	margin-left:-10px;
+	z-index: 1010;
+	background: url('menul.png');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
 .imLiv {
 	cursor: pointer;
 	margin:auto;
@@ -98,9 +176,9 @@ p.texLiv {
 	font-size: 13px;
 	font-family: 'Indie Flower', cursive;
 	position:relative;
-	margin-left: 190px;
-	margin-right: 35px;
-	margin-top:0;
+	margin-left: 40%;
+	margin-right: 10%;
+	margin-top:1%;
 	padding-top:0;
 	line-height:95%;
 	font-weight: normal;
@@ -112,24 +190,20 @@ h1.texLiv{
 	font-family: 'Indie Flower', cursive;
 	position:relative;
 	margin-bottom:0;
-	padding-top: 45px;
-	margin-left: 190px;
-	margin-right: 30px;
+	padding-top: 11%;
 	font-weight: bold;
 }
 
 .subLiv{
-	position:absolute;
+	position:relative;
   height: 35px;
   width:	170px;
 	float: left;
 	font-size: 14px;
 	font-weight: bold;
 	font-family: 'Indie Flower', cursive;
-	margin-top:0;
-	padding-top:0;
-	margin-left: 190px;
-	margin-right: 40px;
+	margin-top:-7%;
+	margin-left: 45%;
 }
 
 .subLivIm{
@@ -141,8 +215,8 @@ h1.texLiv{
 
 .livro {
 	float: left;
-	margin-left: 40px;
-	margin-top: 40px;
+	margin-left: 10%;
+	margin-top: 11%;
 	width: 130px;
 	height: 120px;
 }
@@ -157,11 +231,20 @@ h1.texLiv{
 
 
 @media 
-only screen and (max-width: 500px) {
+only screen and (max-width: 900px) {
 
 	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr { 
+	thead, tbody, th, td, tr { 
 		display: block; 
+	}
+	
+	table{
+		padding:0;
+		margin:0;
+		position:relative;
+		width: 100%;
+		border:solid;
+		text-align:center;
 	}
 	
 	td { 
@@ -171,15 +254,9 @@ only screen and (max-width: 500px) {
 	}
 	
 	td:before { 
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 6px;
-		left: 6px;
-		width: 45%; 
-		padding-right: 10px; 
-		white-space: nowrap;
+		width: 45%;  
 	}
+	
 }
 
 .table{
@@ -196,7 +273,7 @@ only screen and (max-width: 500px) {
 	visibility: hidden;
 	width: 700px;
 	height: 550px;
-	background-size: 700px 500px;
+	background-size: 100% 95%;
 	background-repeat: no-repeat;
 	background-position: center;
 	position: absolute;

@@ -6,14 +6,25 @@
 <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="liv.css">
 <title>Livrante.com.br</title>
+<script src="scripts.js"></script>
 
 </head>
 
 <body>
 
-<img src="logo1.png"  style="width:550px;margin:auto;display:block;">
+<div id="menuP" onclick="mP()"></div>
+<div id="menuL">
+	<br>
+	<a class="l" href="livrante.html"> <div class="Library"> <p class="texMenu">Home</p> </div> </a>
+	<a class="l" href="http://google.com"> <div class="Library"> <p class="texMenu">Quem Somos </p> </div> </a>
+	<a class="l" href="livros.html"> <div class="selec"> <p class="texMenu">Livros </p> </div> </a>
+	<a class="l" href="faq.html"> <div class="Library"> <p class="texMenu">FAQ </p> </div> </a>
 
-<img src="barra2.png" class="barra" style=" ">
+</div>
+
+<img class="logo" src="Logo1.png">
+
+<img src="barra2.png" id="b1" class="barra" style=" ">
 
 <div class="menu">
 	<a class="l" href="livrante.html"> <div class="Library"> <p class="texMenu">Home</p> </div> </a>
@@ -27,13 +38,22 @@
 
 <div align="center" style="width:80%;margin-left:10%;">
 
+<div id="tela"> <!-- a ser preenchido pelo javascript -->
+	<div id="fecha" onclick="fecha()"></div>
+	<div id="esq"> 
+		<h1 id="tEsq"> </h1>
+		<p id="pEsq"> </p>
+	</div>
+	<div id="dir"> </div>
+</div>
+
 <table>
 	<tr>
 		<th>
-			<div class="imLiv">
+			<div class="imLiv" onclick="popTela(7)">
 				<img class="livro" src="livro.png">
-				<h1 class="texLiv">Título 7</h1>
-				<p class="texLiv"> Obra de arte do autor Bla, este livro trata da beleza das letras nas páginas, representando metafóricamente exatamente isso. </p>
+				<h1 id="t7" class="texLiv">Título 7</h1>
+				<p id="p7" class="texLiv"> Obra de arte do autor Bla, este livro trata da beleza das letras nas páginas, representando metafóricamente exatamente isso. </p>
 				<div class="subLiv">
 					<span>Nota:</span>
 					<img class="subLivIm" src="barra1.png">
@@ -41,35 +61,10 @@
 			</div> 
 		</th>
 		<th>
-			<div class="imLiv">
+			<div class="imLiv" onclick="popTela(8)">
 				<img class="livro" src="livro.png">
-				<h1 class="texLiv">Título 8</h1>
-				<p class="texLiv"> Obra de arte do autor Bla, este livro trata da beleza das letras nas páginas, representando metafóricamente exatamente isso. </p>
-				<div class="subLiv">
-					<span>Nota:</span>
-					<img class="subLivIm" src="barra1.png">
-				</div>
-			</div> 
-		</th>
-	</tr>
-
-	<tr>
-		<th>
-			<div class="imLiv">
-				<img class="livro" src="livro.png">
-				<h1 class="texLiv">Título 9</h1>
-				<p class="texLiv"> Obra de arte do autor Bla, este livro trata da beleza das letras nas páginas, representando metafóricamente exatamente isso. </p>
-				<div class="subLiv">
-					<span>Nota:</span>
-					<img class="subLivIm" src="barra1.png">
-				</div>
-			</div> 
-		</th>
-		<th>
-			<div class="imLiv">
-				<img class="livro" src="livro.png">
-				<h1 class="texLiv">Título 10</h1>
-				<p class="texLiv"> Obra de arte do autor Bla, este livro trata da beleza das letras nas páginas, representando metafóricamente exatamente isso. </p>
+				<h1 id="t8" class="texLiv">Título 8</h1>
+				<p id="p8" class="texLiv"> Obra de arte do autor Bla, este livro trata da beleza das letras nas páginas, representando metafóricamente exatamente isso. </p>
 				<div class="subLiv">
 					<span>Nota:</span>
 					<img class="subLivIm" src="barra1.png">
@@ -80,10 +75,35 @@
 
 	<tr>
 		<th>
-			<div class="imLiv">
+			<div class="imLiv" onclick="popTela(9)">
 				<img class="livro" src="livro.png">
-				<h1 class="texLiv">Título 11</h1>
-				<p class="texLiv"> Obra de arte do autor Bla, este livro trata da beleza das letras nas páginas, representando metafóricamente exatamente isso. </p>
+				<h1 id="t9" class="texLiv">Título 9</h1>
+				<p id="p9" class="texLiv"> Obra de arte do autor Bla, este livro trata da beleza das letras nas páginas, representando metafóricamente exatamente isso. </p>
+				<div class="subLiv">
+					<span>Nota:</span>
+					<img class="subLivIm" src="barra1.png">
+				</div>
+			</div> 
+		</th>
+		<th>
+			<div class="imLiv" onclick="popTela(10)">
+				<img class="livro" src="livro.png">
+				<h1 id="t10" class="texLiv">Título 10</h1>
+				<p id="p10" class="texLiv"> Obra de arte do autor Bla, este livro trata da beleza das letras nas páginas, representando metafóricamente exatamente isso. </p>
+				<div class="subLiv">
+					<span>Nota:</span>
+					<img class="subLivIm" src="barra1.png">
+				</div>
+			</div> 
+		</th>
+	</tr>
+
+	<tr>
+		<th>
+			<div class="imLiv" onclick="popTela(11)">
+				<img class="livro" src="livro.png">
+				<h1 id="t11" class="texLiv">Título 11</h1>
+				<p id="p11" class="texLiv"> Obra de arte do autor Bla, este livro trata da beleza das letras nas páginas, representando metafóricamente exatamente isso. </p>
 				<div class="subLiv">
 					<span>Nota:</span>
 					<img class="subLivIm" src="barra1.png">
