@@ -17,3 +17,14 @@ function fecha(){
 	document.getElementById("tela").style.visibility = "hidden";
 	document.getElementById("fecha").style.display = "none";
 }
+
+function mP(){
+	if(document.getElementById("menuP").style.marginLeft == "275px"){
+		document.getElementById("menuL").style.visibility = "hidden";
+  	document.getElementById("menuP").style.marginLeft = "-10px";
+	}else{	
+		document.getElementById("menuL").style.visibility = "visible";
+  	document.getElementById("menuP").style.marginLeft = "275px";
+  }
+	
+}
