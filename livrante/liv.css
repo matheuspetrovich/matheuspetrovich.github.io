@@ -93,7 +93,7 @@ h1.texPer {
 }
 
 #menuL {
-	display:hidden;
+	visibility: hidden;
 	position:absolute;
 	width: 300px;
 	height: 500px;
