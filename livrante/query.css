@@ -1,10 +1,13 @@
-@media 
-only screen and (max-width: 500px) {
+@media only screen and (max-width: 500px) {
 
 	.logo {
 		width:75%;
 		margin:auto;
 		display:block;
+	}
+	
+	#menuP {
+		display:inline;
 	}
 	
 	#menuP {
@@ -20,13 +23,15 @@ only screen and (max-width: 500px) {
 	}
 	
 	.barra{
+		text-align:center;
 		width:90%;
 		margin:auto;	
 		display:block;
 	}
+	
 	.Library {
   	margin-left:10px;
-  	margin-right:1000px;
+  	margin-right:300px;
   	margin-top:25px;
 		display:block;
 	}
