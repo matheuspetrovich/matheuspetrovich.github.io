@@ -1,0 +1,107 @@
+@media 
+only screen and (max-width: 500px) {
+
+	.logo {
+		width:75%;
+		margin:auto;
+		display:block;
+	}
+	
+	#menuP {
+		display:inline;
+	}
+	
+	.menu{
+		display: none;
+	}
+	
+	#b1 {
+		display: none;
+	}
+	
+	.barra{
+		width:90%;
+		margin:auto;	
+		display:block;
+	}
+	.Library {
+  	margin-left:10px;
+  	margin-right:1000px;
+  	margin-top:25px;
+		display:block;
+	}
+
+	.Library:hover {
+  	margin-left:20px;
+		display:block;
+	}
+
+	.selec {
+		display:block;
+  	margin-left:10px;
+  	margin-right:300px;
+  	margin-top:25px;
+	}
+	
+	.texMenu {
+		z-index:1011;
+		color: black;
+		font-size: 40px;
+		font-family: 'Indie Flower', cursive;
+		margin-left:140px;
+		margin-top:-45px;
+		line-height:95%;
+	}
+	/*-- Home --*/
+	.imTexto {	
+		padding:0;
+		height:700px;
+		width:110%;
+	}
+	
+	p.texPer {
+		font-size:15px;
+		line-height:95%;
+	}
+
+	h1.texPer {
+		padding-top:15%;
+		font-size:20px;
+	}
+	/*-----*/
+	
+	thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	table{
+		padding:0;
+		margin:0;
+		position:relative;
+		width: 100%;
+		border:solid;
+		text-align:center;
+	}
+	
+	td { 
+		/* Behave  like a "row" */ 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		width: 45%;  
+	}
+	
+	.imLiv {
+		border: solid;
+		cursor: pointer;
+		margin:auto;
+		display:block;
+ 	  background: url('pergaminho3.png');
+		background-size: 7px 15px;
+		background-repeat: no-repeat;	
+ 	  height: 20px;
+	  width: 15px;
+	}
+}
