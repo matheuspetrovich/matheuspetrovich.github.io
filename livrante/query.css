@@ -80,12 +80,10 @@
 		margin:0;
 		position:relative;
 		width: 100%;
-		border:solid;
 		text-align:center;
 	}
 	
 	td { 
-		/* Behave  like a "row" */ 
 		position: relative;
 		padding-left: 50%; 
 	}
@@ -95,14 +93,21 @@
 	}
 	
 	.imLiv {
-		border: solid;
-		cursor: pointer;
-		margin:auto;
-		display:block;
- 	  background: url('pergaminho3.png');
-		background-size: 7px 15px;
-		background-repeat: no-repeat;	
- 	  height: 20px;
-	  width: 15px;
+ 	  height: 200px;
+	  width: 400px;
+	}
+	
+	p.texLiv {
+		font-size: 13px;
+		margin-left: 40%;
+		margin-right: 10%;
+		margin-top:1%;
+		padding-top:0;
+	}
+
+	h1.texLiv{
+		font-size: 16px;
+		margin-bottom:0;
+		padding-top: 11%;
 	}
 }
