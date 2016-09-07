@@ -55,16 +55,17 @@
 	}
 	/*-- Home --*/
 	.imTexto {	
-		padding-left:0;
-		padding:0;
+		left:0;
+		right:0;
+		margin:auto;
 		height:700px;
-		width:450px;
+		width:360px;
 	}
 	
 	p.texPer {
-		margin-left:100px;
-		margin-right:65px;
-		font-size:17px;
+		margin-left:80px;
+		margin-right:60px;
+		font-size:15px;
 		line-height:100%;
 	}
 
@@ -72,7 +73,7 @@
 		margin-left:95px;
 		margin-right:80px;
 		padding-top:40px;
-		font-size:25px;
+		font-size:20px;
 	}
 	/*-----*/
 	
@@ -98,6 +99,10 @@
 	}
 	
 	.imLiv {
+		left:0;
+		right:0;
+		margin:auto;
+		padding-left:0;
  	  height: 200px;
 	  width: 350px;
 	}
