@@ -58,21 +58,21 @@
 		padding-left:0;
 		padding:0;
 		height:700px;
-		width:100%;
+		width:450px;
 	}
 	
 	p.texPer {
-		margin-left:21%;
-		margin-right:15%;
+		margin-left:100px;
+		margin-right:65px;
 		font-size:17px;
-		line-height:95%;
+		line-height:100%;
 	}
 
 	h1.texPer {
-		margin-left:20%;
-		margin-right:15%;
-		padding-top:10%;
-		font-size:23px;
+		margin-left:95px;
+		margin-right:80px;
+		padding-top:40px;
+		font-size:25px;
 	}
 	/*-----*/
 	
@@ -99,12 +99,14 @@
 	
 	.imLiv {
  	  height: 200px;
-	  width: 100%;
+	  width: 350px;
 	}
 	
 	.livro {
-		margin-left: 8%;
-		margin-top: 13%;
+		width: 110px;
+		height: 100px;
+		margin-left: 21px;
+		margin-top: 55px;
 	}
 	
 	#tela {
