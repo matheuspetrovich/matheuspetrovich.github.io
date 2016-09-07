@@ -84,6 +84,7 @@
 	}
 	
 	table{
+		float:left;
 		left:0;
 		right:0;
 		margin:auto;
@@ -95,7 +96,7 @@
 	
 	td { 
 		position: relative;
-		padding-left: 50%; 
+		margin-left:0;
 	}
 	
 	td:before { 
