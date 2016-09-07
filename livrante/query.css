@@ -63,17 +63,17 @@
 	}
 	
 	p.texPer {
-		margin-left:80px;
-		margin-right:60px;
+		margin-left:90px;
+		margin-right:75px;
 		font-size:15px;
-		line-height:100%;
+		line-height:95%;
 	}
 
 	h1.texPer {
 		margin-left:95px;
 		margin-right:80px;
-		padding-top:40px;
-		font-size:20px;
+		padding-top:50px;
+		font-size:19px;
 	}
 	/*-----*/
 	
@@ -82,8 +82,10 @@
 	}
 	
 	table{
+		left:0;
+		right:0;
+		margin:auto;
 		padding:0;
-		margin:0;
 		position:relative;
 		width: 100%;
 		text-align:center;
@@ -99,9 +101,7 @@
 	}
 	
 	.imLiv {
-		left:0;
-		right:0;
-		margin:auto;
+	
 		padding-left:0;
  	  height: 200px;
 	  width: 350px;
