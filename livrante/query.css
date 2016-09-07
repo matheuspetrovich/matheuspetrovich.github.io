@@ -103,10 +103,25 @@
 	}
 	
 	.imLiv {
+		margin:0;
 		margin-left:0;
 		padding-left:0;
  	  height: 200px;
 	  width: 350px;
+	}
+	p.texLiv {
+		margin-left:0;
+		margin-right:0;
+		text-align: center;
+		font-size: 13px;
+		font-family: 'Indie Flower', cursive;
+		position:relative;
+		padding-left: 40%;
+		padding-right: 10%;
+		margin-top:1%;
+		padding-top:0;
+		line-height:95%;
+		font-weight: normal;
 	}
 	
 	.livro {
