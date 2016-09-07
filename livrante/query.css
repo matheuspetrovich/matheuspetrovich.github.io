@@ -109,31 +109,39 @@
 	
 	#tela {
 		visibility: hidden;
-		width: 99%;
-		height: 400px;
+		width: 350px;
+		height: 300px;
 		background-size: 100% 95%;
 		margin-top:30px;	
 	}
 	
 	#esq {
-		width: 170px;
-		height: 300px;
+		width: 140px;
+		height: 230px;
 		/*background-repeat: no-repeat;
 		background-position: center;*/
 		float: left;
-		margin-left: 58px;
-		margin-top: 55px;	
+		margin-left: 35px;
+		margin-top: 40px;	
+	}
+	
+	#tEsq{
+		font-size: 22px;
+		padding-top:0;
+	}
+	#pEsq{
+		font-size: 15px;
 	}
 	
 	#dir {
-		width: 160px;
-		height: 285px;
+		width: 120px;
+		height: 210px;
 		border: solid 1px gray;
 		/*background-repeat: no-repeat;
 		background-position: center;*/
 		float: right;
-		margin-right: 30px;
-		margin-top: 55px;
+		margin-right: 35px;
+		margin-top: 20px;
 	}
 
 	/*-- faq --*/
