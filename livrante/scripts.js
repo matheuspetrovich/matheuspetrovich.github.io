@@ -1,5 +1,7 @@
 
 function popTela(x) {
+	
+	document.getElementById("tela").style.marginTop = (x-1)*200+"px";
 	document.getElementById("tela").style.visibility = "visible";
   document.getElementById("tela").style.zIndex = "1000";
 	document.getElementById("tela").style.backgroundImage = "url('livros7.png')";
