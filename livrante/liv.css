@@ -80,7 +80,8 @@ h1.texPer {
 #menuP {
 	display:none;
 	width:60px;
-	height:45px;
+	border:solid;
+	height:50px;
 	position: absolute;
 	margin-top: 50px;
 	margin-left:-10px;
