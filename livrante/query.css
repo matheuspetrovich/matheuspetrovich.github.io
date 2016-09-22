@@ -26,20 +26,24 @@
 	}
 	
 	.Library {
-  	margin-left:10px;
+  	margin-left:20px;
   	margin-right:300px;
   	margin-top:25px;
+  	width:65px;
+  	height:45px;
 		display:block;
 	}
 
 	.Library:hover {
-  	margin-left:20px;
+  	margin-left:25px;
 		display:block;
 	}
 
 	.selec {
+  	width:65px;
+  	height:45px;
 		display:block;
-  	margin-left:10px;
+  	margin-left:20px;
   	margin-right:300px;
   	margin-top:25px;
 	}
@@ -49,8 +53,8 @@
 		color: black;
 		font-size: 40px;
 		font-family: 'Indie Flower', cursive;
-		margin-left:140px;
-		margin-top:-45px;
+		margin-left:90px;
+		margin-top:-60px;
 		line-height:95%;
 	}
 	/*-- Home --*/
