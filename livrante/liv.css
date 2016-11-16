@@ -77,6 +77,12 @@ h1.texPer {
 
 /*----------------Livros.html--------------------*/
 
+table{
+	text-align:center;
+	margin-left:auto;	
+	margin-right:auto;
+}
+
 #menuP {
 	display:none;
 	width:60px;
